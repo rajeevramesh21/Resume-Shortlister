@@ -14,14 +14,18 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    name=request.form.Name
     int_features = [str(x) for x in request.form.values()]
     #final_features = [int_features]
     prediction = model.predict(int_features)
 
     output = prediction
 
-    return render_template('index.html', prediction_text='Hello '+Name' Resume Category is {}'.format(output))
+    if(output=='Data Science'):
+        output1=' Resume has been shortlisted '
+    else:
+        output1='Resume not selected'
+
+    return render_template('index.html', prediction_text=output1+ 'Resume Category is {}'.format(output))
 
 
 if __name__ == "__main__":
