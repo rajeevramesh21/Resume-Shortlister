@@ -19,8 +19,7 @@ def predict():
         with open(f) as file:
             data=file.read()
         
-        model.predict(data)
-        prediction = model.predict(data)
+        prediction = resumemodel.predict(data)
 
         output = prediction
 
