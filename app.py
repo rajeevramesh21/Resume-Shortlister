@@ -14,7 +14,7 @@ def getfile():
     if request.method == 'POST':
 
         # for secure filenames. Read the documentation.
-        file = request.files['myfile']
+        file = request.files['content']
         filename = secure_filename(file.filename) 
 
         # os.path.join is used so that paths work in every operating system
@@ -38,7 +38,7 @@ def getfile():
 
 
     else:
-        result = request.args.get['myfile']
+        result = request.args.get['content']
     return result
 
 
