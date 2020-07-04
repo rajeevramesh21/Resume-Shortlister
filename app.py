@@ -10,7 +10,7 @@ model = pickle.load(open('resumemodel.pkl', 'rb'))
 def upload_file():
    return render_template('index.html')
 	
-@app.route('/uploader', methods = ['GET', 'POST'])
+@app.route('/predict',methods=['POST'])
 def predict():
    if request.method == 'POST':
       f = request.files['file']
