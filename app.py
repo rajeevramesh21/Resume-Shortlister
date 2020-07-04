@@ -1,5 +1,5 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 import pickle
 from werkzeug import secure_filename
 
@@ -13,22 +13,10 @@ def home():
 def predict():
     if request.method == 'POST':
 
-        # for secure filenames. Read the documentation.
         f = request.form['content']
         data=[]
         with open(f) as file:
             data=file.read()
-        return f
-        prediction = resumemodel.predict(data)
-
-        output = prediction
-
-        if(output=='Data Science'):
-            output1=' Resume has been shortlisted '
-        else:
-            output1='Resume not selected'
-
-        return render_template('index.html', prediction_text=output1+ 'Resume Category is {}'.format(output))
-
+        return data,f
 if __name__ == "__main__":
     app.run(debug=True)
