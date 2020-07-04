@@ -18,6 +18,8 @@
         <!-- Main Input For Receiving Query to our ML -->
         <form action="{{ url_for('predict')}}" method="post">
             <input type="file" name="file" placeholder="Resume" required="required" />
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
         </form>
 
     </div>
