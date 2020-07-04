@@ -19,5 +19,6 @@ def predict():
           #for rec in fo:
               #data=rec
       return render_template('index.html', 'Resume Category is {}')
+  return render_template('index.html', 'Resume Category is {}')
 if __name__ == "__main__":
     app.run(debug=True)
