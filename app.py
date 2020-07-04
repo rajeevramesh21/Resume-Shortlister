@@ -9,23 +9,18 @@ model = pickle.load(open('resumemodel.pkl', 'rb'))
 @app.route('/')
 def home():
     return render_template('index.html')
-@app.route('/getfile', methods=['GET','POST'])
-def getfile():
+@app.route('/predict', methods=['GET','POST'])
+def predict():
     if request.method == 'POST':
 
         # for secure filenames. Read the documentation.
-        file = request.files['content']
-        filename = secure_filename(file.filename) 
-
-        # os.path.join is used so that paths work in every operating system
-        file.save(os.path.join("C:","Users","lenovo","Desktop","Resume Shortlister",filename))
-
-        # You should use os.path.join here too.
-        with open("C:/Users/lenovo/Desktop/Resume Shortlister") as f:
-            file_content = f.read()
-        features=[file_content]
-        model.predict(features)
-        prediction = model.predict(features)
+        f = request.form['content']
+        data=[]
+        with open(f) as file:
+            data=file.read()
+        
+        model.predict(data)
+        prediction = model.predict(data)
 
         output = prediction
 
@@ -35,13 +30,6 @@ def getfile():
             output1='Resume not selected'
 
         return render_template('index.html', prediction_text=output1+ 'Resume Category is {}'.format(output))
-
-
-    else:
-        result = request.args.get['content']
-    return result
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
