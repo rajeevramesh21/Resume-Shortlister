@@ -18,7 +18,7 @@ def predict():
         data=[]
         with open(f) as file:
             data=file.read()
-        
+        return data
         prediction = resumemodel.predict(data)
 
         output = prediction
