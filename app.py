@@ -14,10 +14,10 @@ def home():
 def predict():
    if request.method == 'POST':
       f = request.files['file']
-      f.save(secure_filename(f.filename))
-      with open ('file.txt') as fo:
-          for rec in fo:
-              data=rec
+      #f.save(secure_filename(f.filename))
+      #with open ('file.txt') as fo:
+          #for rec in fo:
+              #data=rec
       return 'file uploaded successfully'
 if __name__ == "__main__":
     app.run(debug=True)
