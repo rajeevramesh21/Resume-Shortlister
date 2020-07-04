@@ -18,6 +18,6 @@ def predict():
       #with open ('file.txt') as fo:
           #for rec in fo:
               #data=rec
-      return 'file uploaded successfully'
+      return render_template('index.html', 'Resume Category is {}')
 if __name__ == "__main__":
     app.run(debug=True)
