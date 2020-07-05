@@ -1,27 +1,21 @@
-import numpy as np
-from flask import Flask, request, jsonify, render_template
-import pickle
+from flask import Flask, render_template, request
 from werkzeug import secure_filename
-
-
-
 app = Flask(__name__)
-model = pickle.load(open('resumemodel.pkl', 'rb'))
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+app.config['UPLOAD_FOLDER']="C:/Users/lenovo/Desktop/Resume Shortlister/templates"
+app.config['MAX_CONTENT_PATH']='3'
 
-@app.route('/predict',methods=['POST'])
-def predict():
-    '''
-    For rendering results on HTML GUI
-    '''
-    f=request.files['file']
-    
 
-    return render_template('index.html', prediction_text=f)
-                           
-
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/upload')
+def upload_file():
+   return render_template('upload.html')
+	
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      f.save(secure_filename(f.filename))
+      return 'file uploaded successfully'
+		
+if __name__ == '__main__':
+   app.run(debug = True)
