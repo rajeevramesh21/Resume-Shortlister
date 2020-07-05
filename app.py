@@ -1,24 +1,22 @@
-import numpy as np
-from flask import Flask, request, jsonify, render_template, redirect
-import pickle
+from flask import Flask, render_template, request
 from werkzeug import secure_filename
-
+import pickle
 app = Flask(__name__)
-model = pickle.load(open('resumemodel.pkl', 'rb'))
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+app.config['C:/Users/lenovo/Desktop/Resume Shortlister']
+app.config['3']
+
+
+@app.route('/upload')
+def upload_file():
+   return render_template('upload.html')
 	
-@app.route('/predict',methods=['POST'])
-def predict():
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
    if request.method == 'POST':
       f = request.files['file']
-      #f.save(secure_filename(f.filename))
-      #with open ('file.txt') as fo:
-          #for rec in fo:
-              #data=rec
-      return render_template('index.html', 'Resume Category is {}')
-  return render_template('index.html', 'Resume Category is {}')
-if __name__ == "__main__":
-    app.run(debug=True)
+      f.save(secure_filename(f.filename))
+      return 'file uploaded successfully'
+		
+if __name__ == '__main__':
+   app.run(debug = True)
