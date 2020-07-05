@@ -17,7 +17,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    f=request.form['file']
+    f=request.files['file']
     
 
     return render_template('index.html', prediction_text=f)
