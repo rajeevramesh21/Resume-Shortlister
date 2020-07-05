@@ -17,7 +17,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    f=request.files['file']
+    f=request.form['file']
 
     
 
