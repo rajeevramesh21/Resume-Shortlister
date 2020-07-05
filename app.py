@@ -17,11 +17,14 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    f=request.form['file']
-
+    f = request.files['file']
+    #f=request.form['file']
+    data=[]
+    with open (file,'r')as f:
+        data=f.read()
     
 
-    return render_template('index.html', prediction_text='Resume Shortlisted')
+    return render_template('index.html', prediction_text=data)
                            
 
 if __name__ == "__main__":
