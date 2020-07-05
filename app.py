@@ -18,12 +18,9 @@ def predict():
     For rendering results on HTML GUI
     '''
     f=request.form['file']
-    data=[]
-    with open (f,'r')as f:
-        data=f.read()
     
 
-    return render_template('index.html', prediction_text=data)
+    return render_template('index.html', prediction_text=f)
                            
 
 if __name__ == "__main__":
