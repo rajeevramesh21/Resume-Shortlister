@@ -17,10 +17,9 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    f = request.files['file']
-    #f=request.form['file']
+    f=request.form['file']
     data=[]
-    with open (file,'r')as f:
+    with open (f,'r')as f:
         data=f.read()
     
 
